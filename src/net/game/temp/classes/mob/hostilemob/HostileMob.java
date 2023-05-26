@@ -4,7 +4,7 @@ import net.game.temp.classes.mob.Mob;
 import net.game.temp.interfaces.combat.Combat;
 
 public abstract class HostileMob extends Mob implements Combat {
-    private int force;
+    protected int force;
 
     public HostileMob(int health, int force) {
         super(health);
