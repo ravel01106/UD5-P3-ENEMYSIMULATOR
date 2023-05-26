@@ -1,6 +1,6 @@
-package net.game.temp.classes.player;
+package net.game.classes.player;
 
-import net.game.temp.interfaces.combat.Combat;
+import net.game.interfaces.combat.Combat;
 
 public class Player implements Combat {
     private int health;

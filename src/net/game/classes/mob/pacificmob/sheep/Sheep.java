@@ -1,6 +1,6 @@
-package net.game.temp.classes.mob.pacificmob.sheep;
+package net.game.classes.mob.pacificmob.sheep;
 
-import net.game.temp.classes.mob.pacificmob.PacificMob;
+import net.game.classes.mob.pacificmob.PacificMob;
 
 public class Sheep extends PacificMob {
 

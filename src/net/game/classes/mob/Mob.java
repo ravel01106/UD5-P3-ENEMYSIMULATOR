@@ -1,4 +1,4 @@
-package net.game.temp.classes.mob;
+package net.game.classes.mob;
 
 public abstract class Mob {
     protected int health;

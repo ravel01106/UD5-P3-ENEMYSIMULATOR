@@ -1,7 +1,7 @@
-package net.game.temp.classes.mob.hostilemob;
+package net.game.classes.mob.hostilemob;
 
-import net.game.temp.classes.mob.Mob;
-import net.game.temp.interfaces.combat.Combat;
+import net.game.classes.mob.Mob;
+import net.game.interfaces.combat.Combat;
 
 public abstract class HostileMob extends Mob implements Combat {
     protected int force;

@@ -1,6 +1,6 @@
-package net.game.temp.classes.mob.hostilemob.zombie;
+package net.game.classes.mob.hostilemob.zombie;
 
-import net.game.temp.classes.mob.hostilemob.HostileMob;
+import net.game.classes.mob.hostilemob.HostileMob;
 
 public class Zombie extends HostileMob {
 

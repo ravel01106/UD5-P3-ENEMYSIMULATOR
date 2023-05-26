@@ -1,8 +1,7 @@
-package net.game.temp.classes.mob.pacificmob;
+package net.game.classes.mob.pacificmob;
 
-import net.game.temp.classes.mob.Mob;
-import net.game.temp.interfaces.combat.Combat;
-import net.game.temp.interfaces.damage.Damage;
+import net.game.classes.mob.Mob;
+import net.game.interfaces.damage.Damage;
 
 public abstract class PacificMob extends Mob implements Damage {
 
