@@ -1,5 +1,7 @@
 package net.game.temp.interfaces.combat;
 
-public interface Combat {
+import net.game.temp.interfaces.damage.Damage;
+
+public interface Combat extends Damage {
     public int attack();
 }

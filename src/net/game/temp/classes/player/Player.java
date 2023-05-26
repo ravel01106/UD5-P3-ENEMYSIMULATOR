@@ -1,6 +1,8 @@
 package net.game.temp.classes.player;
 
-public class Player {
+import net.game.temp.interfaces.combat.Combat;
+
+public class Player implements Combat {
     private int health;
     private int defense;
     private int force;
@@ -22,6 +24,21 @@ public class Player {
 
     public int getForce() {
         return force;
+    }
+
+    @Override
+    public int attack() {
+        return this.force;
+    }
+
+    @Override
+    public void receiveAttack(int attack) {
+        String msg = "The damage recieved is ";
+        int damageReceived = attack - this.defense;
+        this.health -= damageReceived;
+        msg += damageReceived + " ⚔️, and the current health is ";
+        msg += this.health + " 💘.";
+        System.out.println(msg);
     }
 
 }
