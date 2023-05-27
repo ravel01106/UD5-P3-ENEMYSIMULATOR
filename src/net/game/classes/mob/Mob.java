@@ -8,4 +8,8 @@ public abstract class Mob {
     }
 
     public abstract void move();
+
+    public int getHealth() {
+        return health;
+    }
 }
