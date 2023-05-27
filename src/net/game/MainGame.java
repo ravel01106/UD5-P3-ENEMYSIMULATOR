@@ -64,14 +64,27 @@ public class MainGame {
     public static void fightZombie(Player playerOne) {
         Zombie zombieOne = new Zombie();
         Random random = new Random();
-        int randomActionZombie = random.nextInt(2) + 1;
-        while (playerOne.getHealth() == 0 || zombieOne.getHealth() == 0) {
+
+        while (playerOne.getHealth() > 0 && zombieOne.getHealth() > 0) {
+            int randomActionZombie = random.nextInt(2) + 1;
+            System.out.println("Player attacked Zombie.");
             zombieOne.receiveAttack(playerOne.attack());
 
+            if (zombieOne.getHealth() <= 0) {
+                System.out.println("Player has won!!!!");
+                return;
+            }
+
             if (randomActionZombie == 1) {
+                System.out.println("Zombie attacked Player.");
                 playerOne.receiveAttack(zombieOne.attack());
+
             } else {
                 zombieOne.move();
+            }
+
+            if (playerOne.getHealth() <= 0) {
+                System.out.println("Zombie has won!!!!");
             }
 
         }
@@ -114,6 +127,7 @@ public class MainGame {
         printMenuArmor();
         int defense = chooseArmor(KEYBOARD.nextLine());
         Player playerOne = new Player(defense, force);
+        fightZombie(playerOne);
 
     }
 }
