@@ -10,7 +10,7 @@ public class Zombie extends HostileMob {
 
     @Override
     public void move() {
-        System.out.println("The zombie moves to the character.");
+        System.out.println("\t- The zombie moves to the character.");
     }
 
 }

@@ -33,11 +33,11 @@ public class Player implements Combat {
 
     @Override
     public void receiveAttack(int attack) {
-        String msg = "The damage recieved is ";
+        String msg = "\t- The damage recieved is ";
         int damageReceived = attack - this.defense;
         this.health -= damageReceived;
-        msg += damageReceived + " ⚔️, and the current health is ";
-        msg += this.health + " 💘.";
+        msg += damageReceived + " ⚔︎, and the current health is ";
+        msg += this.health + " ♡.";
         System.out.println(msg);
     }
 

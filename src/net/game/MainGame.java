@@ -62,21 +62,22 @@ public class MainGame {
     }
 
     public static void fightZombie(Player playerOne) {
+        System.out.println("\n\n-----PLAYER FIGHTS AGAINST A ZOMBIE-----");
         Zombie zombieOne = new Zombie();
         Random random = new Random();
 
         while (playerOne.getHealth() > 0 && zombieOne.getHealth() > 0) {
             int randomActionZombie = random.nextInt(2) + 1;
-            System.out.println("Player attacked Zombie.");
+            System.out.println("\n---PLAYER'S TURN---\n\t- Player attacked Zombie:");
             zombieOne.receiveAttack(playerOne.attack());
 
             if (zombieOne.getHealth() <= 0) {
-                System.out.println("Player has won!!!!");
+                System.out.println("\n---FINISH COMBAT---\n\t- Player has won!!!!");
                 return;
             }
-
+            System.out.println("\n---ZOMBIE'S TURN---");
             if (randomActionZombie == 1) {
-                System.out.println("Zombie attacked Player.");
+                System.out.println("\n- Zombie attacked Player:");
                 playerOne.receiveAttack(zombieOne.attack());
 
             } else {
@@ -84,7 +85,7 @@ public class MainGame {
             }
 
             if (playerOne.getHealth() <= 0) {
-                System.out.println("Zombie has won!!!!");
+                System.out.println("\n---FINISH COMBAT---\n\t- Zombie has won!!!!");
             }
 
         }

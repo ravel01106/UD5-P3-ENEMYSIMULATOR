@@ -19,10 +19,10 @@ public abstract class HostileMob extends Mob implements Combat {
 
     @Override
     public void receiveAttack(int attack) {
-        String msg = "The damage recieved is ";
+        String msg = "\t- The damage recieved is ";
         health -= attack;
-        msg += attack + " ⚔️, and the current health is ";
-        msg += this.health + " 💘.";
+        msg += attack + " ⚔︎, and the current health is ";
+        msg += this.health + "♡.";
         System.out.println(msg);
     }
 }
