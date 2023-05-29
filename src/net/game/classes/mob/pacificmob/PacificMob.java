@@ -13,6 +13,9 @@ public abstract class PacificMob extends Mob implements Damage {
     public void receiveAttack(int attack) {
         String msg = "The damage recieved is ";
         health -= attack;
+        if (health < 0) {
+            health = 0;
+        }
         msg += attack + " ⚔️, and the current health is ";
         msg += this.health + " 💘.";
         System.out.println(msg);

@@ -36,6 +36,9 @@ public class Player implements Combat {
         String msg = "\t- The damage recieved is ";
         int damageReceived = attack - this.defense;
         this.health -= damageReceived;
+        if (this.health < 0) {
+            this.health = 0;
+        }
         msg += damageReceived + " ⚔︎, and the current health is ";
         msg += this.health + " ♡.";
         System.out.println(msg);

@@ -3,11 +3,14 @@ package net.game;
 import java.util.Random;
 import java.util.Scanner;
 
+import net.game.classes.mob.hostilemob.enderman.Enderman;
 import net.game.classes.mob.hostilemob.zombie.Zombie;
+import net.game.classes.mob.pacificmob.sheep.Sheep;
 import net.game.classes.player.Player;
 
 public class MainGame {
     static final Scanner KEYBOARD = new Scanner(System.in);
+    static Random random = new Random();
 
     public static void printWelcomeMessage() {
         String msg = "Welcome to the enemy simulator!!!\n";
@@ -61,24 +64,49 @@ public class MainGame {
 
     }
 
+    public static void attackMob(Player playerOne, Zombie zombieOne) {
+        System.out.println("\n\t- Player attacked Zombie:");
+        zombieOne.receiveAttack(playerOne.attack());
+    }
+
+    public static void attackPlayer(Player playerOne, Zombie zombieOne) {
+        System.out.println("\n\t- Zombie attacked Player:");
+        playerOne.receiveAttack(zombieOne.attack());
+    }
+
+    public static void attackMob(Player playerOne, Enderman endermanOne) {
+        System.out.println("\n\t- Player attacked enderman:");
+        endermanOne.receiveAttack(playerOne.attack());
+    }
+
+    public static void attackPlayer(Player playerOne, Enderman endermanOne) {
+        System.out.println("\n\t- Enderman attacked Player:");
+        playerOne.receiveAttack(endermanOne.attack());
+    }
+
+    public static void attackMob(Player playerOne, Sheep sheepOne) {
+        System.out.println("\n\t- Player attacked sheep:");
+        sheepOne.receiveAttack(playerOne.attack());
+    }
+
     public static void fightZombie(Player playerOne) {
         System.out.println("\n\n-----PLAYER FIGHTS AGAINST A ZOMBIE-----");
         Zombie zombieOne = new Zombie();
-        Random random = new Random();
 
         while (playerOne.getHealth() > 0 && zombieOne.getHealth() > 0) {
             int randomActionZombie = random.nextInt(2) + 1;
-            System.out.println("\n---PLAYER'S TURN---\n\t- Player attacked Zombie:");
-            zombieOne.receiveAttack(playerOne.attack());
+            System.out.println("\n---PLAYER'S TURN---");
+            attackMob(playerOne, zombieOne);
 
             if (zombieOne.getHealth() <= 0) {
                 System.out.println("\n---FINISH COMBAT---\n\t- Player has won!!!!");
                 return;
             }
+
             System.out.println("\n---ZOMBIE'S TURN---");
+
             if (randomActionZombie == 1) {
-                System.out.println("\n- Zombie attacked Player:");
-                playerOne.receiveAttack(zombieOne.attack());
+                attackPlayer(playerOne, zombieOne);
 
             } else {
                 zombieOne.move();
@@ -87,6 +115,53 @@ public class MainGame {
             if (playerOne.getHealth() <= 0) {
                 System.out.println("\n---FINISH COMBAT---\n\t- Zombie has won!!!!");
             }
+
+        }
+    }
+
+    public static void fightEnderman(Player playerOne) {
+        System.out.println("\n\n-----PLAYER FIGHTS AGAINST A ENDERMAN-----");
+        Enderman endermanOne = new Enderman();
+
+        while (playerOne.getHealth() > 0 && endermanOne.getHealth() > 0) {
+            int randomActionEnderman = random.nextInt(2) + 1;
+            attackMob(playerOne, endermanOne);
+
+            if (endermanOne.getHealth() <= 0) {
+                System.out.println("\n---FINISH COMBAT---\n\t- Player has won!!!!");
+                return;
+            }
+
+            System.out.println("\n---ENDERMAN'S TURN---");
+
+            if (randomActionEnderman == 1) {
+                attackPlayer(playerOne, endermanOne);
+
+            } else {
+                endermanOne.move();
+            }
+
+            if (playerOne.getHealth() <= 0) {
+                System.out.println("\n---FINISH COMBAT---\n\t- Enderman has won!!!!");
+            }
+
+        }
+    }
+
+    public static void fightSheep(Player playerOne) {
+        System.out.println("\n\n-----PLAYER FIGHTS AGAINST A SHEEP-----");
+        Sheep sheepOne = new Sheep();
+
+        while (sheepOne.getHealth() > 0) {
+            attackMob(playerOne, sheepOne);
+
+            if (sheepOne.getHealth() <= 0) {
+                System.out.println("\n---FINISH COMBAT---\n\t- Player has won!!!!");
+                return;
+            }
+
+            System.out.println("\n---SHEEP'S TURN---");
+            sheepOne.move();
 
         }
     }
@@ -128,7 +203,7 @@ public class MainGame {
         printMenuArmor();
         int defense = chooseArmor(KEYBOARD.nextLine());
         Player playerOne = new Player(defense, force);
-        fightZombie(playerOne);
+        fightSheep(playerOne);
 
     }
 }

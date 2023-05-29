@@ -21,6 +21,9 @@ public abstract class HostileMob extends Mob implements Combat {
     public void receiveAttack(int attack) {
         String msg = "\t- The damage recieved is ";
         health -= attack;
+        if (health < 0) {
+            health = 0;
+        }
         msg += attack + " ⚔︎, and the current health is ";
         msg += this.health + "♡.";
         System.out.println(msg);
