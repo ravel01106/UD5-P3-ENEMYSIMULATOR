@@ -11,7 +11,7 @@ public abstract class PacificMob extends Mob implements Damage {
 
     @Override
     public void receiveAttack(int attack) {
-        String msg = "The damage recieved is ";
+        String msg = "\t- The damage recieved is ";
         health -= attack;
         if (health < 0) {
             health = 0;

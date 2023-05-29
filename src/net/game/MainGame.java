@@ -64,6 +64,36 @@ public class MainGame {
 
     }
 
+    public static int chooseArmor(String armor) {
+        String msg = "";
+        int defense = 0;
+        switch (armor) {
+            case "a":
+                defense = 0;
+                msg = "You will not have any armor.";
+                break;
+            case "b":
+                defense = 1;
+                msg = "You will have a leather armor.";
+                break;
+            case "c":
+                defense = 2;
+                msg = "You will not have a iron armor.";
+                break;
+            case "d":
+                defense = 3;
+                msg = "You will not have a diamond armor.";
+                break;
+            default:
+                msg = "You have not chosen any options, so ";
+                msg += "you will not have any default armor.";
+                defense = 0;
+                break;
+        }
+        System.out.println(msg);
+        return defense;
+    }
+
     public static void attackMob(Player playerOne, Zombie zombieOne) {
         System.out.println("\n\t- Player attacked Zombie:");
         zombieOne.receiveAttack(playerOne.attack());
@@ -166,34 +196,19 @@ public class MainGame {
         }
     }
 
-    public static int chooseArmor(String armor) {
-        String msg = "";
-        int defense = 0;
-        switch (armor) {
-            case "a":
-                defense = 0;
-                msg = "You will not have any armor.";
+    public static void chooseCombat(Player playerOne) {
+        int randomCombat = random.nextInt(3) + 1;
+        switch (randomCombat) {
+            case 1:
+                fightZombie(playerOne);
                 break;
-            case "b":
-                defense = 1;
-                msg = "You will have a leather armor.";
+            case 2:
+                fightEnderman(playerOne);
                 break;
-            case "c":
-                defense = 2;
-                msg = "You will not have a iron armor.";
-                break;
-            case "d":
-                defense = 3;
-                msg = "You will not have a diamond armor.";
-                break;
-            default:
-                msg = "You have not chosen any options, so ";
-                msg += "you will not have any default armor.";
-                defense = 0;
+            case 3:
+                fightSheep(playerOne);
                 break;
         }
-        System.out.println(msg);
-        return defense;
     }
 
     public static void main(String[] args) throws Exception {
@@ -203,7 +218,7 @@ public class MainGame {
         printMenuArmor();
         int defense = chooseArmor(KEYBOARD.nextLine());
         Player playerOne = new Player(defense, force);
-        fightSheep(playerOne);
+        chooseCombat(playerOne);
 
     }
 }
