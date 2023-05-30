@@ -35,6 +35,9 @@ public class Player implements Combat {
     public void receiveAttack(int attack) {
         String msg = "\t- The damage recieved is ";
         int damageReceived = attack - this.defense;
+        if (damageReceived < 0) {
+            damageReceived = 0;
+        }
         this.health -= damageReceived;
         if (this.health < 0) {
             this.health = 0;
